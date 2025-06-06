@@ -6,16 +6,23 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Tests passed\" && exit 0",
-    "build": "rimraf public/bundle.* && rollup --config"
-  },
-  "engines": {
-    "node": "=12.x || =14.x || =15.x"
+    "start": "npx knex migrate:latest && node index.js",
+    "dev": "npx knex migrate:latest && nodemon index.js -e js,njk",
+    "build": "rimraf public/bundle.* && rollup --config",
+    "test": "echo \"Tests passed\" && exit 0"
   },
   "dependencies": {
+    "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
     "express": "^4.17.1",
-    "nunjucks": "^3.2.2"
+    "express-validator": "^7.2.1",
+    "knex": "^3.1.0",
+    "nanoid": "^5.1.5",
+    "nodemon": "^3.1.10",
+    "nunjucks": "^3.2.2",
+    "pg": "^8.16.0",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

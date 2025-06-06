@@ -3,11 +3,11 @@
   import EasyMDE from "easymde";
 
   import { createNote } from "./api";
+  import { messageBox } from "./lib";
 
   const dispatch = createEventDispatcher();
 
   let title = "";
-
   let textarea;
 
   onMount(() => {
@@ -21,11 +21,16 @@
 
   const save = async () => {
     const text = textarea.value;
-    if (!title && !text) {
+    // if (!title && !text) {
+    if (!title.length || !text.length) {
+      messageBox("Пустая заметка или заголовок");
       return;
     }
+
     const note = await createNote(title, text);
-    dispatch("routeEvent", { type: "note-created", id: note._id });
+
+    // dispatch("routeEvent", { type: "note-created", id: note._id });
+    dispatch("routeEvent", { type: "note-created", id: note.data.id });
   };
 
   const cancel = () => {

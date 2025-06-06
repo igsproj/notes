@@ -4,6 +4,7 @@
 
   import Progress from "./Progress.svelte";
   import { getNote, editNote, notePdfUrl } from "./api";
+  import { messageBox } from "./lib";
 
   export let params;
 
@@ -32,9 +33,14 @@
 
   const save = async () => {
     const text = textarea.value;
-    if (!title && !text) {
+    // if (!title && !text) {
+    //   return;
+    // }
+    if (!title.length || !text.length)  {
+      messageBox("Пустая заметка или заголовок");
       return;
     }
+
     await editNote(params.id, title, text);
     dispatch("routeEvent", { type: "note-edited", id: params.id });
   };

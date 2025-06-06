@@ -64,3 +64,26 @@ export const formatSearchResult = (e) => {
   }
   return hl.replace(/<mark>/g, "<strong>").replace(/<\/mark>/g, "</strong>");
 };
+
+export const messageBox = (msg) => {
+  alert(msg);
+};
+
+export const isValidString = (str) => {
+  return typeof str === "string" && str.length;
+};
+
+export const createQueryString = (params, prefix = "") => {
+  let query = "";
+
+  for (let key in params) {
+    const value = String(params[key]);
+
+    if (!isValidString(value)) continue;
+
+    if (!query.length) query += `?${key}=${value}`;
+    else query += `&${key}=${value}`;
+  }
+
+  return prefix + query;
+};
