@@ -1,7 +1,12 @@
 Web приложение "Заметки"<br>
 Автор: Щербаков Игорь (is-inbox@yandex.ru)<br>
 
+## ssh ##
 git clone git@github.com:igsproj/notes.git<br>
+
+## https ##
+git clone https://github.com/igsproj/notes.git<br>
+
 cd notes<br>
 
 Установка модулей<br>
